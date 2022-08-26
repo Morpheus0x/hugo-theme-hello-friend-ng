@@ -9,6 +9,8 @@ $light-color-variant: black;
 $light-color-secondary: #999;
 $light-border-color: #dcdcdc;
 $light-table-color: #dcdcdc;
+$light-logo-color: #222;
+$light-custom-header-bg: #f5edf5;
 
 /* Dark theme colors */
 $dark-background: #232425;
@@ -19,6 +21,8 @@ $dark-color-variant: white;
 $dark-color-secondary: #b3b3bd;
 $dark-border-color: #4e4e57;
 $dark-table-color: #4e4e57;
+$dark-logo-color: #d6d6db; /* #fff; */
+$dark-custom-header-bg: #1b1c1d;
 
 $media-size-phone: "(max-width: 684px)";
 $media-size-tablet: "(max-width: 900px)";

@@ -14,6 +14,22 @@
     height: 54px;
   }
 
+  @media (prefers-color-scheme: dark) {
+    color: $dark-logo-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    color: $light-logo-color;
+  }
+
+  [data-theme=dark] & {
+    color: $dark-logo-color;
+  }
+
+  [data-theme=light] & {
+    color: $light-logo-color;
+  }
+
   &__mark {
     margin-right: 5px;
   }
