@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+/* Brand Color */
+$brand-color: #5b2a86; /* {{ .Site.Params.themeColor | default #5b2a86 }}; */
+
 /* Light theme color */
 $light-background: #fff;
 $light-background-secondary: #eaeaea;
