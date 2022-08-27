@@ -1,0 +1,3 @@
+{{ $path := "js/lang.js" }}
+{{ $js := resources.Get $path | resources.ExecuteAsTemplate $path . | minify }}
+<script>{{ $js.Content | safeJS }}</script>
