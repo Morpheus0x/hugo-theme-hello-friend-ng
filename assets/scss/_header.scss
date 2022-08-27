@@ -57,6 +57,15 @@
   fill: currentColor;
 }
 
+.lang-toggle {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  cursor: pointer;
+}
+
 .not-selectable {
   user-select: none;
   -webkit-user-select: none;  

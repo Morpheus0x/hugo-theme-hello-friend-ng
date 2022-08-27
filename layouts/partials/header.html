@@ -13,6 +13,11 @@
                 </span>
             {{ end }}
 
+            {{- if .Site.Params.EnableCustomLanguageMenu }}
+                <span class="lang-toggle not-selectable">{{with $x := .Language.Lang | printf "flags/%s"}}{{ partial $x .}}{{end}}</span>
+                <!-- TODO: add responsive styling for lang-toggle class, like theme-toggle -->
+            {{- end }}
+
             {{- if .Site.Params.EnableThemeToggle }}
                 <span class="theme-toggle not-selectable">{{ partial "theme-toggle-icon.html" . }}</span>
             {{- end}}
