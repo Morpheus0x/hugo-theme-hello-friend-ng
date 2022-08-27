@@ -59,6 +59,5 @@ if (themeToggle) {
 // Add Language Event Listener
 const langToggle = document.querySelector(".lang-toggle");
 if (langToggle) {
-  console.log("created event listener for lang")
   langToggle.addEventListener("click", toggleLang, false);
-} // e => forceLang(e, true)
+}
