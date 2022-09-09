@@ -48,9 +48,9 @@ function manageLang() {
     return
   }
   if (chosenLang == null) {
-    switchLang(lang)
+    switchLang(lang, false)
   } else {
-    switchLang(chosenLang, false)
+    switchLang(chosenLang, true)
   }
 }
 manageLang()
