@@ -1,0 +1,9 @@
+{{ if .IsNamedParams }}
+    {{ if .Get "tel" }}
+        <a class="obf-decode" href="tel:{{ .Get "tel" }}">[tel protected]</a>
+    {{ else if .Get "mail" }}
+        <a class="obf-decode" href="mailto:{{ .Get "mail" }}">[email protected]</a>
+    {{ end }}
+{{ else }}
+    <span class="obf-decode" data="{{ .Get 0 }}">[protected]</span>
+{{ end }}
