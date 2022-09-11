@@ -20,6 +20,8 @@
             {{ end }}
         </div>
 
+        {{ partial "deobfuscate-script.html" . }}
+        
         {{ partial "javascript.html" . }}
     </body>
 </html>
