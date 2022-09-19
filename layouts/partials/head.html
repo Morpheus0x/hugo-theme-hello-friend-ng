@@ -8,7 +8,15 @@
 <meta name="theme-color" content="{{ .Site.Params.themeColor }}" />
 <link rel="canonical" href="{{ .Permalink }}" />
 
-<script defer data-domain="plausible.dyris.at" src="js/plausible-script.js"></script>
+{{- if .Site.Params.plausible.enabled }}
+{{- if and (.Site.IsServer) (not .Site.Params.plausible.debug) -}}
+    <!-- To avoid stats bloat when in dev/server & not debug mode -->
+    {{- printf "<!-- Dev mode : We do not load plausible script to avoid bloating your stats -->" | safeHTML }}
+{{- else }}
+    <script defer data-domain="{{ .Site.Params.plausible.domain }}" src="{{ .Site.Params.plausible.src }}"></script>
+{{- end }}
+
+{{ end }}
 {{ partial "language-script.html" . }}
 
 {{ block "title" . }}
