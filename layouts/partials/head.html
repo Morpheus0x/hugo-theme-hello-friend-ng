@@ -13,7 +13,16 @@
     <!-- To avoid stats bloat when in dev/server & not debug mode -->
     {{- printf "<!-- Dev mode : We do not load plausible script to avoid bloating your stats -->" | safeHTML }}
 {{- else }}
-    <script defer data-domain="{{ .Site.Params.plausible.domain }}" src="{{ .Site.Params.plausible.src }}"></script>
+    <script 
+        defer 
+        data-domain="{{- .Site.Params.plausible.domain -}}" 
+        {{- if .Site.Params.plausible.data-api -}} 
+            data-api="{{- .Site.Params.plausible.data-api -}}"
+            src="js/stats.js"
+        {{- else -}}
+            src="{{- .Site.Params.plausible.src -}}"
+        {{- end }}
+    ></script>
 {{- end }}
 
 {{ end }}
