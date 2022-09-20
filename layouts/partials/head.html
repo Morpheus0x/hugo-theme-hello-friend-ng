@@ -16,8 +16,8 @@
     <script 
         defer 
         data-domain="{{- .Site.Params.plausible.domain -}}" 
-        {{- if .Site.Params.plausible.data-api -}} 
-            data-api="{{- .Site.Params.plausible.data-api -}}"
+        {{- if .Site.Params.plausible.data_api -}} 
+            data-api="{{- .Site.Params.plausible.data_api -}}"
             src="js/stats.js"
         {{- else -}}
             src="{{- .Site.Params.plausible.src -}}"
