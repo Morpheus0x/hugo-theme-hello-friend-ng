@@ -1,7 +1,7 @@
 {{ define "main" }}
-    <main class="legal">
+    <main class="centered-plain">
         <article>
-            <h2 class="legal-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+            <h2 class="centered-plain-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
 
             {{ if .Params.Cover }}
                 <figure class="post-cover">
@@ -22,7 +22,7 @@
                 <hr />
             {{ end }}
 
-            <div class="legal-content">
+            <div class="centered-plain-content">
                 {{ .Content }}
             </div>
         </article>

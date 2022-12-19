@@ -5,6 +5,6 @@ draft: true
 toc: false
 comments: false
 images:
-layout: legal
+layout: centered-plain
 ---
 
