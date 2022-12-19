@@ -130,13 +130,22 @@
 }
 
 #contactform-return-message {
-  // visibility: hidden;
+  visibility: hidden;
   opacity: 0;
   margin-left: 10px;
-  -webkit-transition: color 10s, opacity 500ms linear;
-  -moz-transition: color 10s, opacity 500ms linear;
-  -o-transition: color 10s, opacity 500ms linear;
-  transition: color 10s, opacity 500ms linear;
+  -webkit-transition: visibility 0ms 500ms, opacity 500ms 0ms linear;
+  -moz-transition: visibility 0ms 500ms, opacity 500ms 0ms linear;
+  -o-transition: visibility 0ms 500ms, opacity 500ms 0ms linear;
+  transition: visibility 0ms 500ms, opacity 500ms 0ms linear;
+
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: visibility 0ms 0ms, opacity 500ms 0ms linear;
+    -moz-transition: visibility 0ms 0ms, opacity 500ms 0ms linear;
+    -o-transition: visibility 0ms 0ms, opacity 500ms 0ms linear;
+    transition: visibility 0ms 0ms, opacity 500ms 0ms linear;
+  }
 
   &.success {
     color: green;
@@ -144,10 +153,10 @@
     opacity: 1;
   }
 
-  &.success::before {
-    content: "\2713";
-    margin-right: 0.25em;
-  }
+  // &.success::before {
+  //   content: "\2713";
+  //   margin-right: 0.25em;
+  // }
 
   &.error {
     color: red;
@@ -155,8 +164,8 @@
     opacity: 1;
   }
 
-  &.error::before {
-    content: "\274C";
-    margin-right: 0.25em;
-  }
+  // &.error::before {
+  //   content: "\274C";
+  //   margin-right: 0.25em;
+  // }
 }

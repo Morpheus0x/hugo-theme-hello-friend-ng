@@ -34,20 +34,22 @@ function submitForm(event) {
 		try {
 			const json = JSON.parse(xhr.responseText);
 			returnMessage.innerHTML = json.msg;
-			returnMessage.className = ''
 			if (xhr.status === 200) {
-				returnMessage.classList.add('success')
+				returnMessage.style.color = 'green';
+				var form = document.querySelector('#contactform form')
+				form.reset()
 			}
 			if (xhr.status === 400) {
-				returnMessage.classList.add('error')
+				returnMessage.style.color = 'red';
 			}
 		} catch(err) {
-			returnMessage.classList.add('error')
+			returnMessage.style.color = 'red';
 			returnMessage.innerHTML = "Unable to send.";
 		}
+		returnMessage.classList.add('visible')
 		setTimeout(() => {
 			const returnMessage = document.querySelector('#contactform-return-message');
-			returnMessage.className = ''
+			returnMessage.classList.remove('visible');
 		}, 5000);
 	};
 
