@@ -1,6 +1,22 @@
 function submitForm(event) {
 	event.preventDefault();
 
+	const submitButton = document.querySelector('#contactform-submit');
+	const returnMessage = document.querySelector('#contactform-return-message');
+	const askconsent = document.querySelector('#askconsent');
+	if (askconsent !== null && localStorage.getItem("cloudflare-turnstile-consent") !== "true") {
+		returnMessage.style.color = 'red';
+		returnMessage.innerHTML = i18n.contactform.error.askconsent;
+		returnMessage.classList.add('visible');
+		setTimeout(() => {
+			const returnMessage = document.querySelector('#contactform-return-message');
+			returnMessage.classList.remove('visible')
+		}, 5000);
+		submitButton.disabled = false;
+		submitButton.value = i18n.contactform.submit;
+		return
+	}
+
 	const form = event.target;
 	const formData = new FormData(form);
 	const xhr = new XMLHttpRequest();
@@ -56,16 +72,16 @@ const turnstile = document.querySelector(".cf-turnstile");
 if (turnstile) {
 	turnstile.setAttribute("data-theme", document.documentElement.getAttribute("data-theme"));
 	const askconsent = document.querySelector('#askconsent')
-	if (localStorage.getItem("cloudflare-turnstile-consent")) {
+	if (localStorage.getItem("cloudflare-turnstile-consent") === "true") {
 		askconsent.style.display = "none";
 		loadCloudflareTurnstile();
 	}
 	if(askconsent) {
 		document.querySelector("#consent-checkbox").addEventListener("click", function() {
-			if (localStorage.getItem("cloudflare-turnstile-consent")) {
+			if (localStorage.getItem("cloudflare-turnstile-consent") === "true") {
 				return
 			}
-			localStorage.setItem("cloudflare-turnstile-consent", true);
+			localStorage.setItem("cloudflare-turnstile-consent", "true");
 			this.className = "checked";
 			setTimeout(loadCloudflareTurnstile, 800);
 		});
