@@ -7,14 +7,15 @@
   height:	65px;
   margin-bottom: 10px;
   font-size: 13px;
+  border: 0.5px solid #ccc;
 
-  [data-theme=dark] & {
-    border: 0.5px solid #999;
-  }
+  // [data-theme=dark] & {
+  //   border: 0.5px solid #999;
+  // }
 
-  [data-theme=light] & {
-    border: 0.5px solid #0e0e0e;
-  }
+  // [data-theme=light] & {
+  //   border: 0.5px solid #0e0e0e;
+  // }
 
   #consent-text {
     margin-left: 42px;
