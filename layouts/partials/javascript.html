@@ -3,7 +3,20 @@
 {{ $contactform := resources.Get "js/contactform.js" }}
 {{ $spoiler := resources.Get "js/spoiler.js" }}
 {{ $prism := resources.Get "js/prism.js" }}
-{{ $secureJS := slice $main $menu $contactform $spoiler $prism | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script type="text/javascript">
+    var i18n = {
+        contactform: {
+            submit: '{{ T "contactform.submit" }}',
+            loading: '{{ T "contactform.loading" }}',
+            success: '{{ T "contactform.success" }}', 
+            error: {
+                askconsent: '{{ T "contactform.error.askconsent" }}',
+                server: '{{ T "contactform.error.server" }}',
+                invalidcaptcha: '{{ T "contactform.error.invalidcaptcha" }}',
+            }
+        }
+    }
+</script>
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
 
 {{ range $val := $.Site.Params.customJS }}

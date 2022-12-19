@@ -53,3 +53,20 @@ other = "Nachricht"
 [contactform.consent]
 other = "Akzeptieren sie die <a href=\"https://www.cloudflare.com/de-de/privacypolicy/\">Privacy Policy von Cloudflare</a>, um das Formular abschicken zu können."
 
+[contactform.submit]
+other = "Abschicken"
+
+[contactform.loading]
+other = "Ladet..."
+
+[contactform.success]
+other = "Nachricht gesendet"
+
+[contactform.error.askconsent]
+other = "Cloudflare privacy policy muss akzeptiert werden"
+
+[contactform.error.server]
+other = "Konnte nicht gesendet werden"
+
+[contactform.error.invalidcaptcha]
+other = "Captcha ungültig, bitte Website neu laden"

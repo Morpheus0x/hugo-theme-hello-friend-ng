@@ -53,3 +53,20 @@ other = "Message"
 [contactform.consent]
 other = "By clicking this checkbox you accept the <a href=\"https://www.cloudflare.com/privacypolicy/\">privacy policy of Cloudflare</a> to enable this form."
 
+[contactform.submit]
+other = "Submit"
+
+[contactform.loading]
+other = "Loading..."
+
+[contactform.success]
+other = "Message sent!"
+
+[contactform.error.askconsent]
+other = "Cloudflare privacy policy has to be accepted"
+
+[contactform.error.server]
+other = "Unable to send"
+
+[contactform.error.invalidcaptcha]
+other = "Invalid Captcha, please reload website"

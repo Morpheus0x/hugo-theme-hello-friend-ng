@@ -1,11 +1,11 @@
 <div id="contactform">
   <form action="{{ if isset .Params "apiurl" }}{{ .Get "apiurl" }}{{ else }}/api/v1/contact{{ end }}" method="post" onsubmit="submitForm(event)">
 {{ if in .Params.fields "name" }}
-    <label for="name">{{ T "contactform.name" }}:</label><br>
+    <label class="limit-width" for="name">{{ T "contactform.name" }}:</label><br>
     <input type="text" id="name" name="name" required><br>
 {{ end }}
 {{ if in .Params.fields "email" }}
-    <label for="email">{{ T "contactform.email" }}:</label><br>
+    <label class="limit-width" for="email">{{ T "contactform.email" }}:</label><br>
     <input type="email" id="email" name="email" required><br>
 {{ end }}
     <label for="message">{{ T "contactform.message" }}:</label><br>
@@ -24,7 +24,7 @@
     </div>
 {{ end }}
     <div id="submit-wrapper">
-      <input type="submit" value="Submit" id="contactform-submit">
+      <input type="submit" value="{{ T "contactform.submit" }}" id="contactform-submit">
       <div id="contactform-return-message"></div>
     </div>
   </form>
