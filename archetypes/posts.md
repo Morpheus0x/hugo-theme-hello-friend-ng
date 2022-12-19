@@ -6,5 +6,6 @@ toc: false
 images:
 tags:
   - untagged
+layout: page
 ---
 
