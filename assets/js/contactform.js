@@ -1,6 +1,6 @@
 function submitForm(event) {
 	event.preventDefault();
-
+	
 	const submitButton = document.querySelector('#contactform-submit');
 	const returnMessage = document.querySelector('#contactform-return-message');
 	const askconsent = document.querySelector('#askconsent');
@@ -21,6 +21,7 @@ function submitForm(event) {
 	const formData = new FormData(form);
 	const xhr = new XMLHttpRequest();
 	xhr.open(form.method, form.action);
+	xhr.timeout = 5000;
 	xhr.setRequestHeader('Accept', 'application/json');
 	xhr.onreadystatechange = () => {
 		if (xhr.readyState !== XMLHttpRequest.DONE) {
@@ -33,7 +34,7 @@ function submitForm(event) {
 		submitButton.value = i18n.contactform.submit;
 		try {
 			const json = JSON.parse(xhr.responseText);
-			returnMessage.innerHTML = json.msg;
+			returnMessage.innerHTML = json.msg; 
 			if (xhr.status === 200) {
 				returnMessage.innerHTML = i18n.contactform.success;
 				returnMessage.style.color = 'green';
