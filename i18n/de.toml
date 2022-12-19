@@ -37,3 +37,19 @@ other = "{{ .Count }} Wörter"
 
 [lastModified]
 other = "Letzte Aktualisierung"
+
+
+# Contact Form
+#
+[contactform.name]
+other = "Name"
+
+[contactform.email]
+other = "E-Mail"
+
+[contactform.message]
+other = "Nachricht"
+
+[contactform.consent]
+other = "Akzeptieren sie die <a href=\"https://www.cloudflare.com/de-de/privacypolicy/\">Privacy Policy von Cloudflare</a>, um das Formular abschicken zu können."
+

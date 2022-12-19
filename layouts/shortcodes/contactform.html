@@ -1,0 +1,39 @@
+<div id="contactform">
+  <form action="{{ if isset .Params "apiurl" }}{{ .Get "apiurl" }}{{ else }}/api/v1/contact{{ end }}" method="post" onsubmit="submitForm(event)">
+{{ if in .Params.fields "name" }}
+    <label for="name">{{ T "contactform.name" }}:</label><br>
+    <input type="text" id="name" name="name" required><br>
+{{ end }}
+{{ if in .Params.fields "email" }}
+    <label for="email">{{ T "contactform.email" }}:</label><br>
+    <input type="email" id="email" name="email" required><br>
+{{ end }}
+    <label for="message">{{ T "contactform.message" }}:</label><br>
+    <textarea id="message" name="message" required></textarea><br>
+{{ with .Get "sitekey" }}
+    <div class="cf-turnstile" data-sitekey="{{ . }}" ></div> <!-- data-theme="dark" hugo preference site key -->
+{{ end }}
+{{ if and (isset .Params "sitekey") (isset .Params "askconsent") (eq .Params.askconsent true)}}
+    <div id="askconsent">
+      <div id="consent-checkbox">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+        </svg>
+      </div>
+      <div id="consent-text">{{ T "contactform.consent" | safeHTML }}</div>
+    </div>
+{{ end }}
+    <div id="submit-wrapper">
+      <input type="submit" value="Submit" id="contactform-submit">
+      <div id="contactform-return-message"></div>
+    </div>
+  </form>
+</div>
+
+<!-- {{ $contactform := resources.Get "js/contactform.js" }}
+{{ $CFsecureJS := slice $contactform | resources.Concat "contactform.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $CFsecureJS.RelPermalink }}" integrity="{{ $CFsecureJS.Data.Integrity }}" async defer></script>
+-->
+{{ if and (isset .Params "sitekey") (or (not (isset .Params "askconsent")) (and (isset .Params "askconsent") (eq .Params.askconsent false)))}}
+<script id="turnstile-script" src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+{{ end }}
