@@ -73,6 +73,10 @@
     margin-bottom: 10px;
     box-sizing: border-box;
   }
+
+  .limit-width {
+    max-width: 280px;
+  }
   
   input[type="text"],
   input[type="email"] {
