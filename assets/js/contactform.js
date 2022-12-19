@@ -24,27 +24,34 @@ function submitForm(event) {
 	xhr.setRequestHeader('Accept', 'application/json');
 	xhr.onreadystatechange = () => {
 		if (xhr.readyState !== XMLHttpRequest.DONE) {
-			console.log('readyState changed to: ', xhr.readyState)
+			// console.log('readyState changed to: ', xhr.readyState);
 			return
 		}
 		const returnMessage = document.querySelector('#contactform-return-message');
 		const submitButton = document.querySelector('#contactform-submit');
 		submitButton.disabled = false;
-		submitButton.value = 'Submit'
+		submitButton.value = i18n.contactform.submit;
 		try {
 			const json = JSON.parse(xhr.responseText);
 			returnMessage.innerHTML = json.msg;
 			if (xhr.status === 200) {
+				returnMessage.innerHTML = i18n.contactform.success;
 				returnMessage.style.color = 'green';
 				var form = document.querySelector('#contactform form')
 				form.reset()
 			}
 			if (xhr.status === 400) {
+				if (json.error == 2) {
+					returnMessage.innerHTML = i18n.contactform.error.invalidcaptcha;
+				} else {
+					console.log('i18n.contactform.error.server');
+					returnMessage.innerHTML = i18n.contactform.error.server;
+				}
 				returnMessage.style.color = 'red';
 			}
 		} catch(err) {
 			returnMessage.style.color = 'red';
-			returnMessage.innerHTML = "Unable to send.";
+			returnMessage.innerHTML = i18n.contactform.error.server;
 		}
 		returnMessage.classList.add('visible')
 		setTimeout(() => {
@@ -53,9 +60,8 @@ function submitForm(event) {
 		}, 5000);
 	};
 
-	const submitButton = document.querySelector('#contactform-submit');
 	submitButton.disabled = true;
-	submitButton.value = 'Loading...'
+	submitButton.value = i18n.contactform.loading;
 
 	xhr.send(formData);
 }
@@ -63,17 +69,17 @@ function loadCloudflareTurnstile() {
 	const contactform = document.querySelector('#contactform');
 	var cfjs = document.createElement("script");
 	cfjs.type = "text/javascript";
-	cfjs.src = "https://challenges.cloudflare.com/turnstile/v0/api.js"
+	cfjs.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
 	cfjs.onload = () => {
 		askconsent.style.display = "none";
 	}
-	contactform.appendChild(cfjs)
+	contactform.appendChild(cfjs);
 }
 
 const turnstile = document.querySelector(".cf-turnstile");
 if (turnstile) {
 	turnstile.setAttribute("data-theme", document.documentElement.getAttribute("data-theme"));
-	const askconsent = document.querySelector('#askconsent')
+	const askconsent = document.querySelector('#askconsent');
 	if (localStorage.getItem("cloudflare-turnstile-consent") === "true") {
 		askconsent.style.display = "none";
 		loadCloudflareTurnstile();
