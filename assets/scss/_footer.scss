@@ -21,7 +21,15 @@
     flex-direction: row;
     align-items: center;
     font-size: 1rem;
-    color: $light-color-secondary;
+    // color: $light-color-secondary;
+
+    [data-theme=dark] & {
+      color: $dark-color-tertiary;
+    }
+  
+    [data-theme=light] & {
+      color: $light-color-tertiary;
+    }
 
     @media #{$media-size-tablet} {
       flex-direction: column;
