@@ -5,6 +5,11 @@
             <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
         {{- end }}
 
+        {{- if .Site.Params.EnableCustomLanguageMenu }}
+            <li><span class="lang-toggle not-selectable">{{with $x := .Language.Lang | printf "flags/%s"}}{{ partial $x .}}{{end}}</span></li>
+            <!-- TODO: add responsive styling for lang-toggle class, like theme-toggle -->
+        {{- end }}
+
         {{- if .Site.Params.EnableGlobalLanguageMenu }}
         <div class="submenu">
             <li class="dropdown">

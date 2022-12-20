@@ -42,10 +42,23 @@
     margin: 0 auto;
     width: 760px;
     max-width: 100%;
+
+    & li {
+      align-self: center;
+    }
+    
+    & li:last-child {
+      align-self: center;
+
+      @media #{$media-size-phone} {
+        order: -1;
+      }
+    }
   }
 }
 
 .theme-toggle {
+  margin-top: 1.9px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,7 +71,7 @@
 }
 
 .lang-toggle {
-  margin: 0 10px;
+  // margin: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
